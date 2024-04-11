@@ -77,7 +77,10 @@ pep508_rs = { git = "https://github.com/astral-sh/uv", tag = "0.1.24" }
 platform-tags = { git = "https://github.com/astral-sh/uv", tag = "0.1.24" }
 pypi-types = { git = "https://github.com/astral-sh/uv", tag = "0.1.24" }
 pyproject-toml = "0.10.0"
-rattler = { version = "0.21.0", default-features = false, features = [
+# rattler = { version = "0.20.0", default-features = false, features = [
+#     "cli-tools",
+# ] }
+rattler = { path = "/home/clement/testclement/proj/rattler/crates/rattler", default-features = false, features = [
     "cli-tools",
 ] }
 # rattler_cli = { path = "/home/clement/testclement/proj/rattler/crates/rattler"}
@@ -173,7 +176,7 @@ pep508_rs = { git = "https://github.com/astral-sh/uv", tag = "0.1.24" }
 # rattler_shell = { git = "https://github.com/baszalmstra/rattler", rev = "b6ccac0f72df9617d6d02220595ed4595aa34e1c" }
 # rattler_solve = { git = "https://github.com/baszalmstra/rattler", rev = "b6ccac0f72df9617d6d02220595ed4595aa34e1c" }
 # rattler_virtual_packages = { git = "https://github.com/baszalmstra/rattler", rev = "b6ccac0f72df9617d6d02220595ed4595aa34e1c" }
-#rattler_conda_types = { path = "../rattler/crates/rattler_conda_types" }
+rattler_conda_types = { path = "/home/clement/testclement/proj/rattler/crates/rattler_conda_types" }
 #rattler_digest = { path = "../rattler/crates/rattler_digest" }
 #rattler_networking = { path = "../rattler/crates/rattler_networking" }
 #rattler_repodata_gateway = { path = "../rattler/crates/rattler_repodata_gateway" }
