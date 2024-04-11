@@ -27,6 +27,7 @@ slow_integration_tests = []
 [dependencies]
 assert_matches = "1.5.0"
 async-once-cell = "0.5.3"
+google-cloud-auth = { git = "https://github.com/yoshidan/google-cloud-rust", branch = "main", package = "google-cloud-auth" }
 cfg-if = "1.0"
 chrono = "0.4.37"
 clap = { version = "4.5.4", default-features = false, features = [
@@ -76,13 +77,14 @@ pep508_rs = { git = "https://github.com/astral-sh/uv", tag = "0.1.24" }
 platform-tags = { git = "https://github.com/astral-sh/uv", tag = "0.1.24" }
 pypi-types = { git = "https://github.com/astral-sh/uv", tag = "0.1.24" }
 pyproject-toml = "0.10.0"
-rattler = { version = "0.20.0", default-features = false, features = [
+rattler = { version = "0.21.0", default-features = false, features = [
     "cli-tools",
 ] }
+# rattler_cli = { path = "/home/clement/testclement/proj/rattler/crates/rattler"}
 rattler_conda_types = { version = "0.20.4", default-features = false }
 rattler_digest = { version = "0.19.2", default-features = false }
 rattler_lock = { version = "0.22.0", default-features = false }
-rattler_networking = { version = "0.20.0", default-features = false }
+rattler_networking = { path = "/home/clement/testclement/proj/rattler/crates/rattler_networking" }
 rattler_repodata_gateway = { version = "0.19.5", default-features = false, features = [
     "sparse",
 ] }
