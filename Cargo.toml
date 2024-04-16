@@ -27,7 +27,7 @@ slow_integration_tests = []
 [dependencies]
 assert_matches = "1.5.0"
 async-once-cell = "0.5.3"
-google-cloud-auth = { git = "https://github.com/yoshidan/google-cloud-rust", branch = "main", package = "google-cloud-auth" }
+google-cloud-auth = "0.13.2"
 cfg-if = "1.0"
 chrono = "0.4.37"
 clap = { version = "4.5.4", default-features = false, features = [

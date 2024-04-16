@@ -1630,7 +1630,8 @@ dependencies = [
 [[package]]
 name = "google-cloud-auth"
 version = "0.13.2"
-source = "git+https://github.com/yoshidan/google-cloud-rust?branch=main#db94b05f1cb5bf3335ab89900d0bfb6d02c45369"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3bf7cb7864f08a92e77c26bb230d021ea57691788fb5dd51793f96965d19e7f9"
 dependencies = [
  "async-trait",
  "base64 0.21.7",
@@ -1651,7 +1652,8 @@ dependencies = [
 [[package]]
 name = "google-cloud-metadata"
 version = "0.4.0"
-source = "git+https://github.com/yoshidan/google-cloud-rust?branch=main#db94b05f1cb5bf3335ab89900d0bfb6d02c45369"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cc279bfb50487d7bcd900e8688406475fc750fe474a835b2ab9ade9eb1fc90e2"
 dependencies = [
  "reqwest",
  "thiserror",
@@ -1661,7 +1663,8 @@ dependencies = [
 [[package]]
 name = "google-cloud-token"
 version = "0.1.2"
-source = "git+https://github.com/yoshidan/google-cloud-rust?branch=main#db94b05f1cb5bf3335ab89900d0bfb6d02c45369"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8f49c12ba8b21d128a2ce8585955246977fbce4415f680ebf9199b6f9d6d725f"
 dependencies = [
  "async-trait",
 ]
