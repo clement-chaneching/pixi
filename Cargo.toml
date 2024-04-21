@@ -28,7 +28,6 @@ google-cloud-auth = []
 [dependencies]
 assert_matches = "1.5.0"
 async-once-cell = "0.5.3"
-google-cloud-auth = "0.13.2"
 cfg-if = "1.0"
 chrono = "0.4.38"
 clap = { version = "4.5.4", default-features = false, features = [
@@ -42,6 +41,7 @@ clap = { version = "4.5.4", default-features = false, features = [
 ] }
 clap-verbosity-flag = "2.2.0"
 clap_complete = "4.5.2"
+google-cloud-auth = { version = "0.13.2", default-features = false}
 console = { version = "0.15.8", features = ["windows-console-colors"] }
 crossbeam-channel = "0.5.12"
 deno_task_shell = "0.16.0"
@@ -78,17 +78,14 @@ pep508_rs = { git = "https://github.com/astral-sh/uv", tag = "0.1.32" }
 platform-tags = { git = "https://github.com/astral-sh/uv", tag = "0.1.32" }
 pypi-types = { git = "https://github.com/astral-sh/uv", tag = "0.1.32" }
 pyproject-toml = "0.10.0"
-# rattler = { version = "0.20.0", default-features = false, features = [
-#     "cli-tools",
-# ] }
-rattler = { path = "../rattler/crates/rattler", default-features = false, features = [
+rattler = { version = "0.22.0", default-features = false, features = [
     "cli-tools",
 ] }
-rattler_conda_types = { version = "0.20.4", default-features = false }
-rattler_digest = { version = "0.19.2", default-features = false }
-rattler_lock = { version = "0.22.0", default-features = false }
+rattler_conda_types = { version = "0.21.0", default-features = false }
+rattler_digest = { version = "0.19.3", default-features = false }
+rattler_lock = { version = "0.22.2", default-features = false }
 rattler_networking = { path = "../rattler/crates/rattler_networking" }
-rattler_repodata_gateway = { version = "0.19.5", default-features = false, features = [
+rattler_repodata_gateway = { version = "0.19.7", default-features = false, features = [
     "sparse",
 ] }
 rattler_shell = { version = "0.20.0", default-features = false, features = [
