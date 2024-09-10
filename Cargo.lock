@@ -366,11 +366,7 @@ dependencies = [
  "http-content-range",
  "itertools 0.12.1",
  "memmap2 0.9.4",
-<<<<<<< HEAD
- "reqwest 0.12.3",
-=======
  "reqwest 0.12.5",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "reqwest-middleware",
  "thiserror",
  "tokio",
@@ -1805,67 +1801,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "google-cloud-auth"
-version = "0.13.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3bf7cb7864f08a92e77c26bb230d021ea57691788fb5dd51793f96965d19e7f9"
-dependencies = [
- "async-trait",
- "base64 0.21.7",
- "google-cloud-metadata",
- "google-cloud-token",
- "home",
- "jsonwebtoken",
- "reqwest 0.11.27",
- "serde",
- "serde_json",
- "thiserror",
- "time",
- "tokio",
- "tracing",
- "urlencoding",
-]
-
-[[package]]
-name = "google-cloud-metadata"
-version = "0.4.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cc279bfb50487d7bcd900e8688406475fc750fe474a835b2ab9ade9eb1fc90e2"
-dependencies = [
- "reqwest 0.11.27",
- "thiserror",
- "tokio",
-]
-
-[[package]]
-name = "google-cloud-token"
-version = "0.1.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8f49c12ba8b21d128a2ce8585955246977fbce4415f680ebf9199b6f9d6d725f"
-dependencies = [
- "async-trait",
-]
-
-[[package]]
-name = "h2"
-version = "0.3.26"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "81fe527a889e1532da5c525686d96d4c2e74cdd345badf8dfef9f6b39dd5f5e8"
-dependencies = [
- "bytes",
- "fnv",
- "futures-core",
- "futures-sink",
- "futures-util",
- "http 0.2.12",
- "indexmap 2.2.6",
- "slab",
- "tokio",
- "tokio-util",
- "tracing",
-]
-
-[[package]]
 name = "hashbrown"
 version = "0.12.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1978,26 +1913,10 @@ dependencies = [
 [[package]]
 name = "http-body"
 version = "0.4.6"
-<<<<<<< HEAD
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7ceab25649e9960c0311ea418d17bee82c0dcec1bd053b5f9a66e265a693bed2"
 dependencies = [
  "bytes",
- "http 0.2.12",
- "pin-project-lite",
-]
-
-[[package]]
-name = "http-body"
-version = "1.0.0"
-=======
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7ceab25649e9960c0311ea418d17bee82c0dcec1bd053b5f9a66e265a693bed2"
-dependencies = [
- "bytes",
-<<<<<<< HEAD
-=======
  "http 0.2.12",
  "pin-project-lite",
 ]
@@ -2009,7 +1928,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1efedce1fb8e6913f23e0c92de8e62cd5b772a67e7b3946df930a62566c93184"
 dependencies = [
  "bytes",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "http 1.1.0",
 ]
 
@@ -2020,15 +1938,9 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "793429d76616a256bcb62c2a2ec2bed781c8307e797e2598c50010f2bee2544f"
 dependencies = [
  "bytes",
-<<<<<<< HEAD
- "futures-core",
- "http 1.1.0",
- "http-body 1.0.0",
-=======
  "futures-util",
  "http 1.1.0",
  "http-body 1.0.1",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "pin-project-lite",
 ]
 
@@ -2059,11 +1971,7 @@ dependencies = [
  "http 1.1.0",
  "http-cache",
  "http-cache-semantics",
-<<<<<<< HEAD
- "reqwest 0.12.3",
-=======
  "reqwest 0.12.5",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "reqwest-middleware",
  "serde",
  "url",
@@ -2133,36 +2041,22 @@ checksum = "9a3a5bfb195931eeb336b2a7b4d761daec841b97f947d34394601737a7bba5e4"
 
 [[package]]
 name = "hyper"
-<<<<<<< HEAD
-version = "0.14.28"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bf96e135eb83a2a8ddf766e426a841d8ddd7449d5f00d34ea02b41d2f19eef80"
-=======
 version = "0.14.30"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a152ddd61dfaec7273fe8419ab357f33aee0d914c5f4efbf0d96fa749eea5ec9"
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
 dependencies = [
  "bytes",
  "futures-channel",
  "futures-core",
  "futures-util",
-<<<<<<< HEAD
- "h2",
-=======
  "h2 0.3.26",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "http 0.2.12",
  "http-body 0.4.6",
  "httparse",
  "httpdate",
  "itoa",
  "pin-project-lite",
-<<<<<<< HEAD
- "socket2 0.5.6",
-=======
  "socket2",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "tokio",
  "tower-service",
  "tracing",
@@ -2171,25 +2065,16 @@ dependencies = [
 
 [[package]]
 name = "hyper"
-<<<<<<< HEAD
-version = "1.3.1"
-=======
 version = "1.4.1"
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "50dfd22e0e76d0f662d429a5f80fcaf3855009297eab6a0a9f8543834744ba05"
 dependencies = [
  "bytes",
  "futures-channel",
  "futures-util",
-<<<<<<< HEAD
- "http 1.1.0",
- "http-body 1.0.0",
-=======
  "h2 0.4.5",
  "http 1.1.0",
  "http-body 1.0.1",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "httparse",
  "itoa",
  "pin-project-lite",
@@ -2220,11 +2105,7 @@ checksum = "5ee4be2c948921a1a5320b629c4193916ed787a7f7f293fd3f7f5a6c9de74155"
 dependencies = [
  "futures-util",
  "http 1.1.0",
-<<<<<<< HEAD
- "hyper 1.3.1",
-=======
  "hyper 1.4.1",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "hyper-util",
  "rustls 0.23.12",
  "rustls-native-certs",
@@ -2250,30 +2131,13 @@ dependencies = [
 
 [[package]]
 name = "hyper-tls"
-version = "0.5.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d6183ddfa99b85da61a140bea0efc93fdf56ceaa041b37d553518030827f9905"
-dependencies = [
- "bytes",
- "hyper 0.14.28",
- "native-tls",
- "tokio",
- "tokio-native-tls",
-]
-
-[[package]]
-name = "hyper-tls"
 version = "0.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "70206fc6890eaca9fde8a0bf71caa2ddfc9fe045ac9e5c70df101a7dbde866e0"
 dependencies = [
  "bytes",
  "http-body-util",
-<<<<<<< HEAD
- "hyper 1.3.1",
-=======
  "hyper 1.4.1",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "hyper-util",
  "native-tls",
  "tokio",
@@ -2291,13 +2155,8 @@ dependencies = [
  "futures-channel",
  "futures-util",
  "http 1.1.0",
-<<<<<<< HEAD
- "http-body 1.0.0",
- "hyper 1.3.1",
-=======
  "http-body 1.0.1",
  "hyper 1.4.1",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "pin-project-lite",
  "socket2",
  "tokio",
@@ -2588,21 +2447,6 @@ dependencies = [
  "fluent-uri",
  "serde",
  "serde_json",
-]
-
-[[package]]
-name = "jsonwebtoken"
-version = "9.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b9ae10193d25051e74945f1ea2d0b42e03cc3b890f7e4cc5faa44997d808193f"
-dependencies = [
- "base64 0.21.7",
- "js-sys",
- "pem",
- "ring",
- "serde",
- "serde_json",
- "simple_asn1",
 ]
 
 [[package]]
@@ -3385,11 +3229,7 @@ version = "3.0.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8e459365e590736a54c3fa561947c84837534b8e9af6fc5bf781307e82658fae"
 dependencies = [
-<<<<<<< HEAD
- "base64 0.22.0",
-=======
  "base64 0.22.1",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "serde",
 ]
 
@@ -3559,11 +3399,7 @@ dependencies = [
  "flate2",
  "fs_extra",
  "futures",
-<<<<<<< HEAD
- "google-cloud-auth",
-=======
  "http 1.1.0",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "http-cache-reqwest",
  "human_bytes",
  "humantime",
@@ -3601,18 +3437,13 @@ dependencies = [
  "rattler_conda_types",
  "rattler_digest",
  "rattler_lock",
- "rattler_networking 0.20.2",
+ "rattler_networking",
  "rattler_repodata_gateway",
  "rattler_shell",
  "rattler_solve",
  "rattler_virtual_packages",
  "regex",
-<<<<<<< HEAD
- "requirements-txt",
- "reqwest 0.12.3",
-=======
  "reqwest 0.12.5",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "reqwest-middleware",
  "reqwest-retry 0.5.0",
  "rlimit",
@@ -4189,16 +4020,12 @@ dependencies = [
  "rattler_cache",
  "rattler_conda_types",
  "rattler_digest",
- "rattler_networking 0.20.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "rattler_networking",
  "rattler_package_streaming",
  "rattler_shell",
  "reflink-copy",
  "regex",
-<<<<<<< HEAD
- "reqwest 0.12.3",
-=======
  "reqwest 0.12.5",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "reqwest-middleware",
  "simple_spawn_blocking",
  "smallvec",
@@ -4326,37 +4153,7 @@ dependencies = [
 
 [[package]]
 name = "rattler_networking"
-<<<<<<< HEAD
-version = "0.20.2"
-dependencies = [
- "anyhow",
- "async-trait",
- "base64 0.22.0",
- "chrono",
- "dirs",
- "fslock",
- "getrandom",
- "google-cloud-auth",
- "http 1.1.0",
- "itertools",
- "keyring",
- "netrc-rs",
- "reqwest 0.12.3",
- "reqwest-middleware",
- "retry-policies",
- "serde",
- "serde_json",
- "thiserror",
- "tracing",
- "url",
-]
-
-[[package]]
-name = "rattler_networking"
-version = "0.20.2"
-=======
 version = "0.21.3"
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0a4c6c046bc414dd46f2f93ecbc78d661a06b9af123f836ea973e2080c62ee15"
 dependencies = [
@@ -4367,20 +4164,12 @@ dependencies = [
  "dirs",
  "fslock",
  "getrandom",
-<<<<<<< HEAD
- "http 1.1.0",
- "itertools",
- "keyring",
- "netrc-rs",
- "reqwest 0.12.3",
-=======
  "google-cloud-auth",
  "http 1.1.0",
  "itertools 0.13.0",
  "keyring",
  "netrc-rs",
  "reqwest 0.12.5",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "reqwest-middleware",
  "retry-policies 0.4.0",
  "serde",
@@ -4402,14 +4191,9 @@ dependencies = [
  "num_cpus",
  "rattler_conda_types",
  "rattler_digest",
-<<<<<<< HEAD
- "rattler_networking 0.20.2 (registry+https://github.com/rust-lang/crates.io-index)",
- "reqwest 0.12.3",
-=======
  "rattler_networking",
  "rattler_redaction",
  "reqwest 0.12.5",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "reqwest-middleware",
  "serde_json",
  "tar",
@@ -4468,14 +4252,9 @@ dependencies = [
  "rattler_cache",
  "rattler_conda_types",
  "rattler_digest",
-<<<<<<< HEAD
- "rattler_networking 0.20.2 (registry+https://github.com/rust-lang/crates.io-index)",
- "reqwest 0.12.3",
-=======
  "rattler_networking",
  "rattler_redaction",
  "reqwest 0.12.5",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "reqwest-middleware",
  "rmp-serde",
  "serde",
@@ -4737,18 +4516,11 @@ dependencies = [
  "encoding_rs",
  "futures-core",
  "futures-util",
-<<<<<<< HEAD
- "h2",
- "http 0.2.12",
- "http-body 0.4.6",
- "hyper 0.14.28",
-=======
  "h2 0.3.26",
  "http 0.2.12",
  "http-body 0.4.6",
  "hyper 0.14.30",
  "hyper-rustls 0.24.2",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "hyper-tls 0.5.0",
  "ipnet",
  "js-sys",
@@ -4758,45 +4530,28 @@ dependencies = [
  "once_cell",
  "percent-encoding",
  "pin-project-lite",
-<<<<<<< HEAD
-=======
  "rustls 0.21.12",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "rustls-pemfile 1.0.4",
  "serde",
  "serde_json",
  "serde_urlencoded",
-<<<<<<< HEAD
- "sync_wrapper",
- "system-configuration",
- "tokio",
- "tokio-native-tls",
-=======
  "sync_wrapper 0.1.2",
  "system-configuration",
  "tokio",
  "tokio-native-tls",
  "tokio-rustls 0.24.1",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "tower-service",
  "url",
  "wasm-bindgen",
  "wasm-bindgen-futures",
  "web-sys",
-<<<<<<< HEAD
-=======
  "webpki-roots 0.25.4",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "winreg 0.50.0",
 ]
 
 [[package]]
 name = "reqwest"
-<<<<<<< HEAD
-version = "0.12.3"
-=======
 version = "0.12.5"
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c7d6d2a27d57148378eb5e111173f4276ad26340ecc5c49a4a2152167a2d6a37"
 dependencies = [
@@ -4806,20 +4561,12 @@ dependencies = [
  "futures-channel",
  "futures-core",
  "futures-util",
-<<<<<<< HEAD
- "http 1.1.0",
- "http-body 1.0.0",
- "http-body-util",
- "hyper 1.3.1",
- "hyper-rustls",
-=======
  "h2 0.4.5",
  "http 1.1.0",
  "http-body 1.0.1",
  "http-body-util",
  "hyper 1.4.1",
  "hyper-rustls 0.27.2",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "hyper-tls 0.6.0",
  "hyper-util",
  "ipnet",
@@ -4833,11 +4580,7 @@ dependencies = [
  "quinn",
  "rustls 0.23.12",
  "rustls-native-certs",
-<<<<<<< HEAD
- "rustls-pemfile 2.1.2",
-=======
  "rustls-pemfile 2.1.3",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "rustls-pki-types",
  "serde",
  "serde_json",
@@ -4854,11 +4597,7 @@ dependencies = [
  "wasm-bindgen-futures",
  "wasm-streams",
  "web-sys",
-<<<<<<< HEAD
- "webpki-roots",
-=======
  "webpki-roots 0.26.3",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "winreg 0.52.0",
 ]
 
@@ -4870,11 +4609,7 @@ dependencies = [
  "anyhow",
  "async-trait",
  "http 1.1.0",
-<<<<<<< HEAD
- "reqwest 0.12.3",
-=======
  "reqwest 0.12.5",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "serde",
  "thiserror",
  "tower-service",
@@ -4892,15 +4627,9 @@ dependencies = [
  "futures",
  "getrandom",
  "http 1.1.0",
-<<<<<<< HEAD
- "hyper 1.3.1",
- "parking_lot 0.11.2",
- "reqwest 0.12.3",
-=======
  "hyper 1.4.1",
  "parking_lot 0.11.2",
  "reqwest 0.12.5",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "reqwest-middleware",
  "retry-policies 0.3.0",
  "tokio",
@@ -5145,11 +4874,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a88d6d420651b496bdd98684116959239430022a115c1240e6c3993be0b15fba"
 dependencies = [
  "openssl-probe",
-<<<<<<< HEAD
- "rustls-pemfile 2.1.2",
-=======
  "rustls-pemfile 2.1.3",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "rustls-pki-types",
  "schannel",
  "security-framework",
@@ -5166,11 +4891,7 @@ dependencies = [
 
 [[package]]
 name = "rustls-pemfile"
-<<<<<<< HEAD
-version = "2.1.2"
-=======
 version = "2.1.3"
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "196fe16b00e106300d3e45ecfcb764fa292a535d7326a29a5875c579c7417425"
 dependencies = [
@@ -5635,18 +5356,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "simple_asn1"
-version = "0.6.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "adc4e5204eb1910f40f9cfa375f6f05b68c3abac4b6fd879c8ff5e7ae8a0a085"
-dependencies = [
- "num-bigint",
- "num-traits",
- "thiserror",
- "time",
-]
-
-[[package]]
 name = "siphasher"
 version = "0.3.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -6053,12 +5762,7 @@ dependencies = [
  "bytes",
  "libc",
  "mio",
-<<<<<<< HEAD
- "num_cpus",
- "parking_lot 0.12.1",
-=======
  "parking_lot 0.12.3",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "pin-project-lite",
  "signal-hook-registry",
  "socket2",
@@ -6424,18 +6128,11 @@ source = "git+https://github.com/astral-sh/uv?tag=0.4.0#d9bd3bc7a536037ea8645fb7
 dependencies = [
  "anyhow",
  "async-trait",
-<<<<<<< HEAD
- "base64 0.22.0",
- "http 1.1.0",
- "once_cell",
- "reqwest 0.12.3",
-=======
  "base64 0.22.1",
  "futures",
  "http 1.1.0",
  "once-map",
  "reqwest 0.12.5",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "reqwest-middleware",
  "rust-netrc",
  "rustc-hash",
@@ -6520,11 +6217,7 @@ dependencies = [
  "pep508_rs",
  "platform-tags",
  "pypi-types",
-<<<<<<< HEAD
- "reqwest 0.12.3",
-=======
  "reqwest 0.12.5",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "reqwest-middleware",
  "reqwest-retry 0.7.1",
  "rkyv",
@@ -6610,11 +6303,7 @@ dependencies = [
  "pep508_rs",
  "platform-tags",
  "pypi-types",
-<<<<<<< HEAD
- "reqwest 0.12.3",
-=======
  "reqwest 0.12.5",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "reqwest-middleware",
  "rmp-serde",
  "rustc-hash",
@@ -6694,20 +6383,10 @@ dependencies = [
  "cargo-util",
  "dashmap",
  "fs-err",
-<<<<<<< HEAD
- "git2",
- "glob",
- "hmac",
- "home",
- "rand",
- "reqwest 0.12.3",
- "sha1",
-=======
  "reqwest 0.12.5",
  "reqwest-middleware",
  "serde",
  "thiserror",
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "tokio",
  "tracing",
  "url",
@@ -6896,15 +6575,6 @@ dependencies = [
  "directories",
  "etcetera",
  "fs-err",
-<<<<<<< HEAD
- "futures",
- "once_cell",
- "pep440_rs",
- "pep508_rs",
- "reqwest 0.12.3",
- "reqwest-middleware",
-=======
->>>>>>> fe145888b590be8354cbb7890269424cfae4ca8f
  "tempfile",
 ]
 
