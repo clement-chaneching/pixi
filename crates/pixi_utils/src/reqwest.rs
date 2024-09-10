@@ -8,6 +8,9 @@ use rattler_networking::{
     AuthenticationMiddleware, AuthenticationStorage, MirrorMiddleware, OciMiddleware,
 };
 
+#[cfg(feature = "google-cloud-auth")]
+use rattler_networking::GCSMiddleware;
+
 use reqwest::Client;
 use reqwest_middleware::{ClientBuilder, ClientWithMiddleware};
 use std::collections::HashMap;
@@ -104,6 +107,11 @@ pub fn build_reqwest_clients(config: Option<&Config>) -> (Client, ClientWithMidd
         client_builder = client_builder
             .with(mirror_middleware(&config))
             .with(oci_middleware());
+    }
+
+    #[cfg(feature = "google-cloud-auth")]
+    {
+        client_builder = client_builder.with(GCSMiddleware);
     }
 
     client_builder = client_builder.with_arc(Arc::new(
