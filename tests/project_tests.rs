@@ -2,17 +2,19 @@ mod common;
 
 use std::path::PathBuf;
 
-use crate::{common::package_database::PackageDatabase, common::PixiControl};
 use insta::assert_debug_snapshot;
-use pixi::{util::default_channel_config, Project};
-use rattler_conda_types::{Channel, Platform};
+use pixi::Project;
+use pixi_manifest::FeaturesExt;
+use rattler_conda_types::{NamedChannelOrUrl, Platform};
 use tempfile::TempDir;
 use url::Url;
 
+use crate::common::{package_database::PackageDatabase, PixiControl};
+
 #[tokio::test]
 async fn add_channel() {
-    // Create a local package database with no entries and write it to disk. This ensures that we
-    // have a valid channel.
+    // Create a local package database with no entries and write it to disk. This
+    // ensures that we have a valid channel.
     let package_database = PackageDatabase::default();
     let initial_channel_dir = TempDir::new().unwrap();
     package_database
@@ -39,21 +41,20 @@ async fn add_channel() {
         .unwrap();
 
     // There should be a loadable project manifest in the directory
-    let project = pixi.project().unwrap();
+    let project = Project::from_path(&pixi.manifest_path()).unwrap();
 
     // Our channel should be in the list of channels
-    let local_channel = Channel::from_str(
-        Url::from_directory_path(additional_channel_dir.path()).unwrap(),
-        &default_channel_config(),
-    )
-    .unwrap();
-    assert!(project.channels().contains(&local_channel));
+    let local_channel =
+        NamedChannelOrUrl::Url(Url::from_file_path(additional_channel_dir.as_ref()).unwrap());
+    let channels = project.default_environment().channels();
+    assert!(channels.contains(&local_channel));
 }
 
 #[tokio::test]
 async fn parse_project() {
     fn dependency_names(project: &Project, platform: Platform) -> Vec<String> {
         project
+            .default_environment()
             .dependencies(None, Some(platform))
             .iter()
             .map(|dep| dep.0.as_normalized().to_string())
