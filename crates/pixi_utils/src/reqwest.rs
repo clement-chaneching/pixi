@@ -5,11 +5,9 @@ use rattler_networking::{
     authentication_storage::{self, backends::file::FileStorageError},
     mirror_middleware::Mirror,
     retry_policies::ExponentialBackoff,
-    AuthenticationMiddleware, AuthenticationStorage, MirrorMiddleware, OciMiddleware,
+    AuthenticationMiddleware, AuthenticationStorage, GCSMiddleware, MirrorMiddleware,
+    OciMiddleware,
 };
-
-#[cfg(feature = "google-cloud-auth")]
-use rattler_networking::GCSMiddleware;
 
 use reqwest::Client;
 use reqwest_middleware::{ClientBuilder, ClientWithMiddleware};
@@ -109,10 +107,7 @@ pub fn build_reqwest_clients(config: Option<&Config>) -> (Client, ClientWithMidd
             .with(oci_middleware());
     }
 
-    #[cfg(feature = "google-cloud-auth")]
-    {
-        client_builder = client_builder.with(GCSMiddleware);
-    }
+    client_builder = client_builder.with(GCSMiddleware);
 
     client_builder = client_builder.with_arc(Arc::new(
         auth_middleware(&config).expect("could not create auth middleware"),
