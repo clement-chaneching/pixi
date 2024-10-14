@@ -7,9 +7,8 @@ use clap::Parser;
 use dialoguer::theme::ColorfulTheme;
 use itertools::Itertools;
 use miette::{Diagnostic, IntoDiagnostic};
-use pixi_config::ConfigCli;
 
-use crate::cli::cli_config::ProjectConfig;
+use crate::cli::cli_config::{PrefixUpdateConfig, ProjectConfig};
 use crate::environment::verify_prefix_location_unchanged;
 use crate::lock_file::UpdateLockFileOptions;
 use crate::project::errors::UnsupportedPlatformError;
@@ -27,24 +26,20 @@ use tracing::Level;
 
 /// Runs task in project.
 #[derive(Parser, Debug, Default)]
-#[clap(trailing_var_arg = true, arg_required_else_help = true)]
+#[clap(trailing_var_arg = true)]
 pub struct Args {
     /// The pixi task or a task shell command you want to run in the project's environment, which can be an executable in the environment's PATH.
-    #[arg(required = true)]
     pub task: Vec<String>,
 
     #[clap(flatten)]
     pub project_config: ProjectConfig,
 
     #[clap(flatten)]
-    pub lock_file_usage: super::LockFileUsageArgs,
+    pub prefix_update_config: PrefixUpdateConfig,
 
     /// The environment to run the task in.
     #[arg(long, short)]
     pub environment: Option<String>,
-
-    #[clap(flatten)]
-    pub config: ConfigCli,
 
     /// Use a clean environment to run the task
     ///
@@ -58,22 +53,28 @@ pub struct Args {
 pub async fn execute(args: Args) -> miette::Result<()> {
     // Load the project
     let project = Project::load_or_else_discover(args.project_config.manifest_path.as_deref())?
-        .with_cli_config(args.config);
-
-    // Sanity check of prefix location
-    verify_prefix_location_unchanged(project.default_environment().dir().as_path()).await?;
+        .with_cli_config(args.prefix_update_config.config.clone());
 
     // Extract the passed in environment name.
     let environment = project.environment_from_name_or_env_var(args.environment.clone())?;
-
-    let best_platform = environment.best_platform();
 
     // Find the environment to run the task in, if any were specified.
     let explicit_environment = if environment.is_default() {
         None
     } else {
-        Some(environment)
+        Some(environment.clone())
     };
+
+    // Print all available tasks if no task is provided
+    if args.task.is_empty() {
+        command_not_found(&project, explicit_environment);
+        return Ok(());
+    }
+
+    // Sanity check of prefix location
+    verify_prefix_location_unchanged(project.default_environment().dir().as_path()).await?;
+
+    let best_platform = environment.best_platform();
 
     // Verify that the current platform has the required virtual packages for the environment.
     if let Some(ref explicit_environment) = explicit_environment {
@@ -84,7 +85,7 @@ pub async fn execute(args: Args) -> miette::Result<()> {
     // Ensure that the lock-file is up-to-date.
     let mut lock_file = project
         .update_lock_file(UpdateLockFileOptions {
-            lock_file_usage: args.lock_file_usage.into(),
+            lock_file_usage: args.prefix_update_config.lock_file_usage(),
             ..UpdateLockFileOptions::default()
         })
         .await?;

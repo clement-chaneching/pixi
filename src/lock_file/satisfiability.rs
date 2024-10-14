@@ -41,6 +41,9 @@ pub enum EnvironmentUnsat {
 
     #[error(transparent)]
     IndexesMismatch(#[from] IndexesMismatch),
+
+    #[error(transparent)]
+    InvalidChannel(#[from] ParseChannelError),
 }
 
 #[derive(Debug, Error)]
@@ -243,18 +246,28 @@ pub fn verify_environment_satisfiability(
     // that the order matters here. If channels are added in a different order,
     // the solver might return a different result.
     let config = environment.project().channel_config();
-    let channels = grouped_env
+    let channels: Vec<Url> = grouped_env
         .channels()
         .into_iter()
-        .map(|channel| channel.clone().into_channel(&config).base_url().clone());
-    let locked_channels = locked_environment.channels().iter().map(|c| {
-        NamedChannelOrUrl::from_str(&c.url)
-            .unwrap_or_else(|_err| NamedChannelOrUrl::Name(c.url.clone()))
-            .into_channel(&config)
-            .base_url()
-            .clone()
-    });
-    if !channels.eq(locked_channels) {
+        .map(|channel| {
+            channel
+                .clone()
+                .into_channel(&config)
+                .map(|channel| channel.base_url().clone())
+        })
+        .try_collect()?;
+
+    let locked_channels: Vec<Url> = locked_environment
+        .channels()
+        .iter()
+        .map(|c| {
+            NamedChannelOrUrl::from_str(&c.url)
+                .unwrap_or_else(|_err| NamedChannelOrUrl::Name(c.url.clone()))
+                .into_channel(&config)
+                .map(|channel| channel.base_url().clone())
+        })
+        .try_collect()?;
+    if !channels.eq(&locked_channels) {
         return Err(EnvironmentUnsat::ChannelsMismatch);
     }
 
@@ -412,9 +425,14 @@ pub(crate) fn pypi_satifisfies_editable(
                 url.to_string(),
             )),
             UrlOrPath::Path(path) => {
-                let absolute_path = project_root.join(path);
                 // sometimes the path is relative, so we need to join it with the project root
-                if &absolute_path != install_path {
+                let absolute_path = project_root.join(path);
+                // absolute path can also have symlinks in it, so we need to canonicalize them
+                let real_absolute_path = dunce::canonicalize(&absolute_path).map_err(|e| {
+                    PlatformUnsat::FailedToCanonicalizePath(absolute_path.clone(), e)
+                })?;
+
+                if &real_absolute_path != install_path {
                     return Err(PlatformUnsat::EditablePackagePathMismatch(
                         spec.name.clone(),
                         absolute_path.clone(),
@@ -635,6 +653,7 @@ pub(crate) fn verify_package_platform_satisfiability(
                             SpecConversionError::InvalidPath(p) => {
                                 ParseChannelError::InvalidPath(p).into()
                             }
+                            SpecConversionError::InvalidChannel(c) => c.into(),
                         };
                         return Err(PlatformUnsat::FailedToParseMatchSpec(
                             name.as_source().to_string(),

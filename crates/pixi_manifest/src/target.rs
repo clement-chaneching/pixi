@@ -222,6 +222,11 @@ impl Target {
     ///
     /// This will overwrite any existing dependency of the same name
     pub fn add_pypi_dependency(&mut self, name: PyPiPackageName, requirement: PyPiRequirement) {
+        tracing::info!(
+            "Adding pypi dependency: {} {}",
+            name.as_normalized(),
+            requirement
+        );
         self.pypi_dependencies
             .get_or_insert_with(Default::default)
             .insert(name, requirement);
@@ -553,7 +558,7 @@ mod tests {
     use insta::assert_snapshot;
     use itertools::Itertools;
 
-    use crate::manifest::Manifest;
+    use crate::manifests::manifest::Manifest;
 
     #[test]
     fn test_targets_overwrite_order() {

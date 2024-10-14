@@ -5,7 +5,7 @@ use crate::common::{
     package_database::{Package, PackageDatabase},
 };
 use common::{LockFileExt, PixiControl};
-use pixi::cli::cli_config::ProjectConfig;
+use pixi::cli::cli_config::{PrefixUpdateConfig, ProjectConfig};
 use pixi::cli::{run, run::Args, LockFileUsageArgs};
 use pixi::environment::LockFileUsage;
 use pixi::Project;
@@ -272,8 +272,11 @@ async fn install_frozen() {
     // Check if running with frozen doesn't suddenly install the latest update.
     let result = pixi
         .run(run::Args {
-            lock_file_usage: LockFileUsageArgs {
-                frozen: true,
+            prefix_update_config: PrefixUpdateConfig {
+                lock_file_usage: LockFileUsageArgs {
+                    frozen: true,
+                    ..Default::default()
+                },
                 ..Default::default()
             },
             task: string_from_iter(["python", "--version"]),
@@ -663,6 +666,7 @@ async fn test_setuptools_override_failure() {
 
         [dependencies]
         pip = ">=24.0,<25"
+        python = "<3.13"
 
         # The transitive dependencies of viser were causing issues
         [pypi-dependencies]
